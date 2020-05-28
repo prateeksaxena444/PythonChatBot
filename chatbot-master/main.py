@@ -13,13 +13,9 @@ print(voices)
 engine.setProperty('voice', voices[0].id)
 
 
-def speak(word):
-    engine.say(word)
-    engine.runAndWait()
-
 
 # pyttsx3
-bot = ChatBot("Fiinformer")
+bot = ChatBot("FiinFormer")
 
 convo = [
     'hello',
@@ -34,14 +30,26 @@ convo = [
     'In which language you talk?',
     ' I mostly talk in english',
     'What is Equity ?',
-    'Kedar is a bad bay'
+    'Kedar is a bad bay',
+    'Wassup fiini',
+    'Mind your own business, you have nothing to do with what am i doing so fuck off. Go to your place and try to do something productive its fucking lockdown brooo'
 ]
+
+
+f = open('chat.txt', 'r')
+train_data = []
+
+for line in f:
+    m = re.search('(Q:|A:)?(.+)', line)
+    if m:
+        train_data.append(m.groups()[1].lower())
+
 
 trainer = ListTrainer(bot)
 
 # now training the bot with the help of trainer
 
-trainer.train(convo)
+trainer.train(train_data)
 
 # answer = bot.get_response("what is your name?")
 # print(answer)
@@ -67,6 +75,12 @@ photoL = Label(main, image=img)
 
 photoL.pack(pady=5)
 
+
+def speak():
+    engine.say(answer_to_speak)
+    engine.runAndWait()
+
+
 # take query : it takes audio as input from user and convert it to string..
 
 def takeQuery():
@@ -86,60 +100,78 @@ def takeQuery():
             print("not recognized")
 
 
+answer_to_speak = "You have to ask something first";
+
+
 def ask_from_bot():
     query = textF.get()
-    answer_from_bot = bot.get_response(query)
-    msgs.insert(END, "you : " + query)
+    answer_from_bot = bot.get_response(query.lower())
+    msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
-    msgs.insert(END, "bot : " + str(answer_from_bot))
-    speak(answer_from_bot)
+    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    global answer_to_speak
+    answer_to_speak=answer_from_bot
     textF.delete(0, END)
     msgs.yview(END)
+
 
 def ask_from_faq():
     query = "What is Equity ?"
-    answer_from_bot = bot.get_response(query)
-    msgs.insert(END, "you : " + query)
+    answer_from_bot = bot.get_response(query.lower())
+    msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
-    msgs.insert(END, "bot : " + str(answer_from_bot))
-    speak(answer_from_bot)
+    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    global answer_to_speak
+    answer_to_speak = answer_from_bot
     textF.delete(0, END)
     msgs.yview(END)
+
 
 def ask_from_btn2():
     query = "What is Fixed Income Derivative ?"
-    answer_from_bot = bot.get_response(query)
-    msgs.insert(END, "you : " + query)
+    answer_from_bot = bot.get_response(query.lower())
+    msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
-    msgs.insert(END, "bot : " + str(answer_from_bot))
-    speak(answer_from_bot)
+    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    global answer_to_speak
+    answer_to_speak = answer_from_bot
     textF.delete(0, END)
     msgs.yview(END)
+
 
 def ask_from_btn3():
     query = "What is Face Value ?"
-    answer_from_bot = bot.get_response(query)
-    msgs.insert(END, "you : " + query)
+    answer_from_bot = bot.get_response(query.lower())
+    msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
-    msgs.insert(END, "bot : " + str(answer_from_bot))
-    speak(answer_from_bot)
+    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    global answer_to_speak
+    answer_to_speak = answer_from_bot
     textF.delete(0, END)
     msgs.yview(END)
+
 
 def ask_from_btn4():
     query = "What is OTC ?"
-    answer_from_bot = bot.get_response(query)
-    msgs.insert(END, "you : " + query)
+    answer_from_bot = bot.get_response(query.lower())
+    msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
-    msgs.insert(END, "bot : " + str(answer_from_bot))
-    speak(answer_from_bot)
+    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    global answer_to_speak
+    answer_to_speak = answer_from_bot
     textF.delete(0, END)
     msgs.yview(END)
 
+
 frame = Frame(main)
 
+btn5 = Button(main, text="Speak up please", font=("Verdana", 10), command=speak)
+btn5.pack(side=TOP)
+
 sc = Scrollbar(frame)
-msgs = Listbox(frame, width=80, height=20, yscrollcommand=sc.set)
+msgs = Text(frame, width=80, height=20, yscrollcommand=sc.set, wrap=WORD)
+#msgs = Listbox(frame, width=80, height=20, yscrollcommand=sc.set)
+
 
 sc.pack(side=RIGHT, fill=Y)
 
@@ -173,10 +205,6 @@ btn4.pack(side=LEFT)
 # creating a function
 def enter_function(event):
     btn.invoke()
-    btn1.invoke()
-    btn2.invoke()
-    btn3.invoke()
-    btn4.invoke()
 
 
 # going to bind main window with enter key...
