@@ -4,6 +4,8 @@ Q:hi
 A:Hello there!how can I help you!
 Q:hello
 A:Hello there!how can I help you!
+Q:bye
+A:bye!!
 Q:What is investment and why there is a need to invest?
 A:Investment means to invest the idle resources in order to gain returns.In finance terms,investment is usually related to money.Elsewhere, investment could be of time. asset, etc.By investing, you can plan for uncertain future, gain profits on idle resource and increase your wealth.
 Q:What are the various options for investing
@@ -14,3 +16,13 @@ Q:What are capital markets Capital Markets?
 A:Capital can be defined as the wealth or asset of a person or an organization which can be used for investment purpose. So now, capital market can be referred as a market where exchange of capital takes place, between those who have capital and those who need capital. The capital markets are composed of 2 markets, primary and secondary
 Q:What is a Debt Instrument?
 A:Debt instrument represents a contract whereby one party lends money to another on pre-determined terms with regards to rate and periodicity of interest, repayment of principal amount by the borrower to lender. The term bond is used for debt instruments issued by central and state government  and public sector whereas private corporate sector uses the term debenture for debt instruments.
+Q:What are debentures?
+A:The term debenture is used for debt instruments issued by private corporate sector.
+Q:What are bonds?
+A:The term bond is used for debt instruments issued by central and state governments
+Q:What are convertible bonds?
+A:It is a fixed-income debt security that yields interest payments, but can be converted into a predetermined number of common stock or equity shares. The conversion from the bond to stock can be done at certain times during the bond's life and is usually at the discretion of the bondholder.
+Q:What are primary markets?
+A:It provides the channel for the sale of new securities. It provides the opportunity to issuer of the securities, governments as well as the corporates to raise the funds/resources to meet the requirements of investment. In the primary market, companies sell new stocks and bonds to the public for the first time, such as with an initial public offering (IPO). In the primary market, security can be sold only once by the one who raises the fund.
+Q:What is IPO?
+A:It is the process of offering shares of a private corporation to the public in a new stock issuance. This helps a company to raise capital from public investors. Company also chooses the exchange on which the shares will be issued and subsequently traded publically. The stocks in primary market are offered through IPO.

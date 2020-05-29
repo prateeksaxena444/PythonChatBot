@@ -128,7 +128,7 @@ def ask_from_faq():
 
 
 def ask_from_btn2():
-    query = "What is Fixed Income Derivative ?"
+    query = "What are bonds?"
     answer_from_bot = bot.get_response(query.lower())
     msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
@@ -140,7 +140,7 @@ def ask_from_btn2():
 
 
 def ask_from_btn3():
-    query = "What is Face Value ?"
+    query = "What are primary markets?"
     answer_from_bot = bot.get_response(query.lower())
     msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
@@ -152,7 +152,7 @@ def ask_from_btn3():
 
 
 def ask_from_btn4():
-    query = "What is OTC ?"
+    query = "What is IPO?"
     answer_from_bot = bot.get_response(query.lower())
     msgs.insert(END, "\nyou : " + query)
     print(type(answer_from_bot))
@@ -184,7 +184,7 @@ frame.pack()
 textF = Entry(main, font=("Verdana", 20))
 textF.pack(fill=X, pady=10)
 
-btn = Button(main, text="Ask from bot", font=("Verdana", 12), command=ask_from_bot)
+btn = Button(main, text="Ask the Bot", font=("Verdana", 12), command=ask_from_bot)
 btn.pack()
 
 w = Label(main, text="FAQ's :  ")
@@ -193,13 +193,13 @@ w.pack(side=LEFT)
 btn1 = Button(main, text="What is Equity ?", font=("Verdana", 8), command=ask_from_faq)
 btn1.pack(side=LEFT)
 
-btn2 = Button(main, text="What is Fixed Income derivative ?", font=("Verdana", 8), command=ask_from_btn2)
+btn2 = Button(main, text="What are bonds?", font=("Verdana", 8), command=ask_from_btn2)
 btn2.pack(side=LEFT)
 
-btn3 = Button(main, text="What is face value ?", font=("Verdana", 8), command=ask_from_btn3)
+btn3 = Button(main, text="What are primary markets?", font=("Verdana", 8), command=ask_from_btn3)
 btn3.pack(side=LEFT)
 
-btn4 = Button(main, text="What is OTC ?", font=("Verdana", 8), command=ask_from_btn4)
+btn4 = Button(main, text="What is IPO?", font=("Verdana", 8), command=ask_from_btn4)
 btn4.pack(side=LEFT)
 
 # creating a function
