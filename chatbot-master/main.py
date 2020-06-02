@@ -4,6 +4,7 @@ from tkinter import *
 import pyttsx3 as pp
 import speech_recognition as s
 import threading
+import tkinter.messagebox
 
 engine = pp.init()
 
@@ -62,13 +63,17 @@ trainer.train(train_data)
 #     answer = bot.get_response(query)
 #     print("bot : ", answer)
 
-
+def openNewWindow():
+    tkinter.messagebox.showinfo("About us","FiinFormer is developed by Vaidehi Degwekar, Aditya Thakkar, Sahim Reza, Rohit Salvi, Prateek Saxena to resolve queries related to Financial Markets.")
 
 main = Tk()
 
 main.geometry("800x650")
-
 main.title("FiinFormer")
+
+btnabs = Button(main, text="About us", font=("Verdana", 8), command=openNewWindow)
+btnabs.pack(side=TOP , anchor='w')
+
 img = PhotoImage(file="bot2.png")
 
 photoL = Label(main, image=img)
@@ -106,9 +111,9 @@ answer_to_speak = "You have to ask something first";
 def ask_from_bot():
     query = textF.get()
     answer_from_bot = bot.get_response(query.lower())
-    msgs.insert(END, "\nyou : " + query)
+    msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
-    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
     global answer_to_speak
     answer_to_speak=answer_from_bot
     textF.delete(0, END)
@@ -118,9 +123,9 @@ def ask_from_bot():
 def ask_from_faq():
     query = "What is Equity ?"
     answer_from_bot = bot.get_response(query.lower())
-    msgs.insert(END, "\nyou : " + query)
+    msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
-    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
     global answer_to_speak
     answer_to_speak = answer_from_bot
     textF.delete(0, END)
@@ -130,9 +135,9 @@ def ask_from_faq():
 def ask_from_btn2():
     query = "What are bonds?"
     answer_from_bot = bot.get_response(query.lower())
-    msgs.insert(END, "\nyou : " + query)
+    msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
-    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
     global answer_to_speak
     answer_to_speak = answer_from_bot
     textF.delete(0, END)
@@ -142,9 +147,9 @@ def ask_from_btn2():
 def ask_from_btn3():
     query = "What are primary markets?"
     answer_from_bot = bot.get_response(query.lower())
-    msgs.insert(END, "\nyou : " + query)
+    msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
-    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
     global answer_to_speak
     answer_to_speak = answer_from_bot
     textF.delete(0, END)
@@ -154,9 +159,9 @@ def ask_from_btn3():
 def ask_from_btn4():
     query = "What is IPO?"
     answer_from_bot = bot.get_response(query.lower())
-    msgs.insert(END, "\nyou : " + query)
+    msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
-    msgs.insert(END, "\nbot : " + str(answer_from_bot))
+    msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
     global answer_to_speak
     answer_to_speak = answer_from_bot
     textF.delete(0, END)
@@ -165,7 +170,8 @@ def ask_from_btn4():
 
 frame = Frame(main)
 
-btn5 = Button(main, text="Speak up please", font=("Verdana", 10), command=speak)
+photo = PhotoImage(file = "speakup.png")
+btn5 = Button(main, text="Speak up please ?", font=("Verdana", 10), image=photo, command=speak)
 btn5.pack(side=TOP)
 
 sc = Scrollbar(frame)
@@ -201,6 +207,8 @@ btn3.pack(side=LEFT)
 
 btn4 = Button(main, text="What is IPO?", font=("Verdana", 8), command=ask_from_btn4)
 btn4.pack(side=LEFT)
+
+
 
 # creating a function
 def enter_function(event):
