@@ -7,6 +7,7 @@ import pyttsx3 as pp
 import speech_recognition as s
 import threading
 import tkinter.messagebox
+import webbrowser
 
 engine = pp.init()
 
@@ -125,7 +126,10 @@ def ask_from_bot():
     answer_from_bot = getresponse(query.lower())
     msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
-    msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
+    if(answer_from_bot != None):
+        msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
+    else:
+        msgs.insert(END, "\n\nbot : I did not get get you, please try to ask your question in other way")
     global answer_to_speak
     answer_to_speak=answer_from_bot
     textF.delete(0, END)
@@ -202,7 +206,7 @@ frame.pack()
 textF = Entry(main, font=("Verdana", 20))
 textF.pack(fill=X, pady=10)
 
-btn = Button(main, text="Ask the Bot", font=("Verdana", 12), command=ask_from_bot)
+btn = Button(main, text="Ask the Bot", fg="brown", font=("Verdana", 12), command=ask_from_bot)
 btn.pack()
 
 w = Label(main, text="FAQ's :  ")
@@ -220,6 +224,13 @@ btn3.pack(side=LEFT)
 btn4 = Button(main, text="What is IPO?", font=("Verdana", 8), command=ask_from_btn4)
 btn4.pack(side=LEFT)
 
+def callback(event):
+    webbrowser.open_new(r"http://www.investopedia.com/")
+
+
+link = Label(main, text="Investopedia", fg="blue", cursor="hand2")
+link.pack()
+link.bind("<Button-1>", callback)
 
 
 # creating a function
