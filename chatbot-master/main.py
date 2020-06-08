@@ -1,3 +1,5 @@
+import ast
+
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from tkinter import *
@@ -52,6 +54,8 @@ trainer = ListTrainer(bot)
 
 trainer.train(train_data)
 
+
+
 # answer = bot.get_response("what is your name?")
 # print(answer)
 
@@ -79,6 +83,14 @@ img = PhotoImage(file="bot2.png")
 photoL = Label(main, image=img)
 
 photoL.pack(pady=5)
+
+def getresponse(query):
+    file = open("data.txt", "r")
+    contents = file.read()
+    d = ast.literal_eval(contents)
+    file.close()
+    print(d)
+    return d.get(query)
 
 
 def speak():
@@ -110,7 +122,7 @@ answer_to_speak = "You have to ask something first";
 
 def ask_from_bot():
     query = textF.get()
-    answer_from_bot = bot.get_response(query.lower())
+    answer_from_bot = getresponse(query.lower())
     msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
     msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
@@ -122,7 +134,7 @@ def ask_from_bot():
 
 def ask_from_faq():
     query = "What is Equity ?"
-    answer_from_bot = bot.get_response(query.lower())
+    answer_from_bot = getresponse(query.lower())
     msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
     msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
@@ -134,7 +146,7 @@ def ask_from_faq():
 
 def ask_from_btn2():
     query = "What are bonds?"
-    answer_from_bot = bot.get_response(query.lower())
+    answer_from_bot = getresponse(query.lower())
     msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
     msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
@@ -146,7 +158,7 @@ def ask_from_btn2():
 
 def ask_from_btn3():
     query = "What are primary markets?"
-    answer_from_bot = bot.get_response(query.lower())
+    answer_from_bot = getresponse(query.lower())
     msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
     msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
@@ -158,7 +170,7 @@ def ask_from_btn3():
 
 def ask_from_btn4():
     query = "What is IPO?"
-    answer_from_bot = bot.get_response(query.lower())
+    answer_from_bot = getresponse(query.lower())
     msgs.insert(END, "\n\nyou : " + query.upper())
     print(type(answer_from_bot))
     msgs.insert(END, "\n\nbot : " + str(answer_from_bot))
